@@ -26,7 +26,7 @@ public class WorldRecord {
 
     private LocalDate dateOfRecord;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Recorder recorder;
 
     public WorldRecord(String description, Double value, String unitOfMeasure, LocalDate dateOfRecord, Recorder recorder) {
