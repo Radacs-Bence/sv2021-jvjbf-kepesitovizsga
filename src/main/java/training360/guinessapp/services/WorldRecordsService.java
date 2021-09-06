@@ -53,7 +53,12 @@ public class WorldRecordsService {
         Recorder oldRecorder = worldRecord.getRecorder();
         Recorder newRecorder = getRecorder(command.getRecorderId());
 
+
         Double valueDifference = command.getValue() - worldRecord.getValue();
+
+        if(valueDifference < 0){
+            throw new IllegalArgumentException("Record smaller than precious");
+        }
 
         BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto(
                 worldRecord.getDescription(),
